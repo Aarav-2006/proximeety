@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #8e44ad);
+      color: white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .profile-summary-container {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+    }
+
+    .profile-box {
+      padding: 30px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+      min-height: 450px; /* Increased min-height for social links */
+    }
+
+    .profile-box img {
+      border-radius: 50%;
+      width: 120px; /* Enlarged profile picture */
+      height: 120px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 20px;
+      border: 3px solid white;
+    }
+
+    .upload-photo {
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+      font-size: 12px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .profile-box p {
+      margin-bottom: 10px;
+      font-size: 16px; /* Larger font size */
+      text-align: center;
+    }
+
+    .profile-box a {
+      color: #4a90e2;
+      text-decoration: none;
+      word-wrap: break-word;
+    }
+
+    .search-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top: 5px solid white;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .profiles-display {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 50%;
+      margin-left: auto;
+      padding-left: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards 6s;
+    }
+
+    .profile-card {
+      display: flex;
+      padding: 20px; /* Enlarged padding */
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 15px;
+      align-items: center;
+      display: none;
+      animation: slideIn 1s ease-in-out forwards;
+    }
+
+    .profile-card img {
+      border-radius: 50%;
+      width: 90px; /* Larger profile card image */
+      height: 90px;
+      margin-right: 15px;
+    }
+
+    .profile-card p {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(50%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-summary-container">
+    <div class="profile-box">
+      <img id="user-photo" src="https://via.placeholder.com/100" alt="User Photo">
+      <label for="photo-upload" class="upload-photo">Upload Photo</label>
+      <input type="file" id="photo-upload" style="display: none;" accept="image/*">
+      <p><strong>Name:</strong> Aarav Jhawar</p>
+      <p><strong>Gender:</strong> Male</p>
+      <p><strong>Age:</strong> 18</p>
+      <p><strong>Birthdate:</strong> 11-11-2006</p>
+      <p><strong>Education:</strong> Plaksha University</p>
+      <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/aaravjahwar</a></p>
+      
+      
+    </div>
+    
+    <div class="search-section">
+      <h2>Searching people within your proximity</h2>
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <div class="profiles-display" id="profiles-display">
+    
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/150" alt="Sahil Patel">
+      <div>
+        <p><strong>Name:</strong> Sahil Patel</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Age:</strong> 19</p>
+        <p><strong>Birthdate:</strong> 17-09-2005</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/150" alt="Sia Jain">
+      <div>
+        <p><strong>Name:</strong> Sia Jain</p>
+        <p><strong>Gender:</strong> Female</p>
+        <p><strong>Age:</strong> 18</p>
+        <p><strong>Birthdate:</strong> 25-08-2006</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/150" alt="Rushil Gargash">
+      <div>
+        <p><strong>Name:</strong> Rushil Gargash</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Age:</strong> 18</p>
+        <p><strong>Birthdate:</strong> 08-08-2006</p>
+      </div>
+    </div>
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/150" alt="Sahil Aleem">
+      <div>
+        <p><strong>Name:</strong> Sahil Aleem</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Age:</strong> 19</p>
+        <p><strong>Birthdate:</strong> 16-11-2006</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const profiles = document.querySelectorAll('.profile-card');
+      profiles.forEach((profile, index) => {
+        setTimeout(() => {
+          profile.style.display = 'flex';
+        }, index * 1000);
+      });
+    }, 6000);
+
+    const photoInput = document.getElementById('photo-upload');
+    const userPhoto = document.getElementById('user-photo');
+
+    photoInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          userPhoto.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

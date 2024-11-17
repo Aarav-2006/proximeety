@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Customization</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #8e44ad);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .profile-container {
+      background: rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 700px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-header h1 {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .profile-photo-container {
+      width: 140px;
+      height: 140px;
+      margin: 10px auto;
+      position: relative;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: url('https://via.placeholder.com/140') no-repeat center;
+      background-size: cover;
+      border: 3px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .profile-photo span {
+      position: absolute;
+      text-align: center;
+    }
+
+    .profile-photo:hover {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .profile-photo input {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .profile-block {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+
+    .profile-block label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .profile-block input,
+    .profile-block select,
+    .profile-block textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .profile-block textarea {
+      height: 60px;
+      resize: none;
+    }
+
+    .profile-block input:focus,
+    .profile-block select:focus,
+    .profile-block textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(72, 126, 234, 0.7);
+    }
+
+    .submit-btn {
+      background: linear-gradient(90deg, #4a90e2, #8e44ad);
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(90deg, #8e44ad, #4a90e2);
+    }
+
+    @media screen and (max-width: 768px) {
+      .profile-container {
+        padding: 15px;
+      }
+
+      .profile-header h1 {
+        font-size: 22px;
+      }
+
+      .profile-photo-container {
+        width: 120px;
+        height: 120px;
+      }
+
+      .profile-block input,
+      .profile-block select,
+      .profile-block textarea {
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .submit-btn {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-photo-container">
+        <div class="profile-photo" title="Click to upload a photo">
+          <span>INSERT PHOTO HERE</span>
+          <input type="file" accept="image/jpeg, image/jpg" onchange="previewPhoto(event)">
+        </div>
+      </div>
+      <h1>Customize Your Profile</h1>
+    </div>
+    <div class="profile-block">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="" disabled selected>Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <label for="age">Age:</label>
+      <input type="number" id="age" placeholder="Enter your age" required>
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" required>
+      <label for="education">Education:</label>
+      <input type="text" id="education" placeholder="Your highest degree or school">
+    </div>
+    <div class="profile-block">
+      <label for="linkedin">LinkedIn:</label>
+      <input type="url" id="linkedin" placeholder="Enter LinkedIn profile link">
+      <label for="instagram">Instagram:</label>
+      <input type="url" id="instagram" placeholder="Enter Instagram profile link">
+    </div>
+    <div class="profile-block">
+      <label for="hobbies">Hobbies (Optional):</label>
+      <textarea id="hobbies" placeholder="Enter your hobbies"></textarea>
+    </div>
+    <div class="profile-block">
+      <label for="cv-upload">Upload Your CV:</label>
+      <input type="file" id="cv-upload" accept=".pdf, .doc, .docx">
+    </div>
+    <button class="submit-btn" id="saveProfileButton">Save Profile</button>
+  </div>
+
+  <script>
+    
+    document.getElementById("saveProfileButton").addEventListener("click", function () {
+      window.location.href = "profile_display.html";
+    });
+
+    
+    function previewPhoto(event) {
+      const file = event.target.files[0];
+      if (file && (file.type === "image/jpeg" || file.type === "image/jpg")) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const photoDiv = document.querySelector('.profile-photo');
+          photoDiv.style.backgroundImage = `url(${e.target.result})`;
+          photoDiv.querySelector('span').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please upload a JPEG or JPG image only.');
+        event.target.value = ""; 
+      }
+    }
+  </script>
+</body>
+</html>
